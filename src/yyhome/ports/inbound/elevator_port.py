@@ -1,11 +1,6 @@
 from abc import ABC, abstractmethod
 
-class GayoPort(ABC):
-
-    @abstractmethod
-    def refresh_token(self):
-        pass
-
+class ElevatorPort(ABC):
     @abstractmethod
     def call_elevator(self):
         pass
