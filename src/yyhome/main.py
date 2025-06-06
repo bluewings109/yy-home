@@ -11,6 +11,7 @@ app = FastAPI(
     title="YY Home App",
     description="YY Home App",
     version="1.0.0",
+    docs_url="/docs",
 )
 
 load_dotenv()

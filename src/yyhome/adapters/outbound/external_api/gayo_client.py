@@ -38,11 +38,11 @@ class GayoClient(GayoPort):
         if 400 <= response.status_code < 600:
             self.logger.error("Login to Gayo failed.")
         else:
-            self.logger.info("Successfully called elevator")
+            self.logger.info("Successfully Logged in to Gayo")
 
         login_response: GayoLoginResponse = GayoLoginResponse(**response.json())
 
-        self.token = login_response.authorization
+        self.token = login_response.authorization.split("Bearer ")[1]
 
     def call_elevator(self):
         if JWTService.is_token_expired(self.token):
@@ -58,7 +58,7 @@ class GayoClient(GayoPort):
         )
 
         elevator_call_headers: dict[str, str] = {
-            "Authorization": f"{self.token}",
+            "Authorization": f"Bearer {self.token}",
             "Content-Type": "application/json",
             "Accept": "*/*",
             "User-Agent": "",
