@@ -1,0 +1,15 @@
+[project]
+name = "yy-home"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Youngbeom Kim", email = "bluewings109@gmail.com"},
+]
+dependencies = ["pydantic>=2.11.5", "fastapi>=0.115.12", "uvicorn>=0.34.3", "dependency-injector>=4.47.1", "pyright>=1.1.401"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
