@@ -37,6 +37,7 @@ class GayoClient(GayoPort):
 
         if 400 <= response.status_code < 600:
             self.logger.error("Login to Gayo failed.")
+            raise HTTPStatusException(status_code=response.status_code, detail=f"Failed to login to Gayo. status_code={response.status_code}, response.text={response.text}")
         else:
             self.logger.info("Successfully Logged in to Gayo")
 
@@ -72,5 +73,9 @@ class GayoClient(GayoPort):
 
         if 400 <= response.status_code < 600:
             self.logger.error("Elevator call failed.")
+            raise HTTPStatusException(
+                status_code=response.status_code,
+                detail=f"Failed to call elevator. status_code={response.status_code}, response.text={response.text}",
+            )
         else:
             self.logger.info("Successfully called elevator")
