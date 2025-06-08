@@ -32,7 +32,7 @@ class GayoClient(GayoPort):
         try:
             response = requests.post(login_url, headers=login_request_headers, json=login_request_body.model_dump(by_alias=True)) # Body -> camelCase
         except requests.exceptions.RequestException as e:
-            self.logger.error("Failed to login to Gayo")
+            self.logger.error(f"Failed to login to Gayo. error={str(e)}")
             raise HTTPStatusException(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, detail="Failed to login to Gayo") from e
 
         if 400 <= response.status_code < 600:
