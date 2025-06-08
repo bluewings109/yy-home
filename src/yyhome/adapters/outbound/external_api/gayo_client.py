@@ -26,7 +26,7 @@ class GayoClient(GayoPort):
         login_request_body: GayoLoginRequest = GayoLoginRequest(phone_number=self.settings.gayo_phone_number)
         login_request_headers: dict[str, str] = {
             "Content-Type": "application/json",
-            "Accept": "*/*",
+            "Accept": "application/json",
             "User-Agent": ""
         }
         try:
